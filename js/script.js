@@ -162,7 +162,29 @@ function atualizaRanking(jogadores) {
     </tbody>`;
   let html = '';
   for (let i = 0; i < jogadores.length; i++) {
-    html += `
+    if (i === 0) {
+      html += `
+      <tr>
+        <td class="ouro">#${i + 1} ${jogadores[i].nome}</td>
+        <td class="pontos">${jogadores[i].pontos}</td>
+      </tr>
+    `;
+    } else if (i === 1) {
+      html += `
+      <tr>
+        <td class="prata">#${i + 1} ${jogadores[i].nome}</td>
+        <td class="pontos">${jogadores[i].pontos}</td>
+      </tr>
+    `;
+    } else if (i === 2) {
+      html += `
+      <tr>
+        <td class="bronze">#${i + 1} ${jogadores[i].nome}</td>
+        <td class="pontos">${jogadores[i].pontos}</td>
+      </tr>
+    `;
+    } else
+      html += `
       <tr>
         <td>#${i + 1} ${jogadores[i].nome}</td>
         <td class="pontos">${jogadores[i].pontos}</td>

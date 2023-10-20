@@ -9,11 +9,15 @@
   --fundo: #302e2b;
   --fundo-claro: #3c3b39;
   --verde: #81b64c;
+  --verde-hover: #96c45b;
+  --verde-borda-hover: #558e44;
   --verde-borda: #45753c;
   --vermelho: #fa422d;
   --vermelho-borda: #a40e0e;
   --caixa: #262522;
   --preto: #1e1e1b;
+  --preto-hover: #494745;
+  --preto-borda-hover: #373534;
   --preto-borda: #121210;
 }
 button {
@@ -109,8 +113,12 @@ aside {
   text-align: center;
   font-size: 2rem;
   border-radius: 8px;
+  transition: all 0.2s;
 }
-
+.button:hover {
+  background-color: var(--verde-hover);
+  border-color: var(--verde-borda-hover);
+}
 .botoes {
   margin-top: 15px;
   width: 80%;
@@ -157,6 +165,8 @@ table {
 }
 
 th {
+  display: flex;
+  justify-content: space-between;
   padding-left: 10px;
   font-weight: 600;
   color: var(--texto-cinza);
@@ -193,8 +203,12 @@ td:last-child {
 .preto {
   background-color: var(--preto);
   border-color: var(--preto-borda);
+  transition: all 0.2s;
 }
-
+.preto:hover {
+  background-color: var(--preto-hover);
+  border-color: var(--preto-borda-hover);
+}
 aside {
   padding: 0 20px 20px 20px;
   display: flex;
@@ -291,8 +305,12 @@ li {
   background-color: var(--verde);
   border-bottom: 3px var(--verde-borda) solid;
   border-radius: 8px;
+  transition: all 0.2s;
 }
-
+.vencer:hover {
+  background-color: var(--verde-hover);
+  border-color: var(--verde-borda-hover);
+}
 #tabela-ranking {
   grid-area: lista;
 }
@@ -305,12 +323,31 @@ li {
   background-color: var(--preto);
   border-color: var(--preto-borda);
 }
+.perdedor:hover {
+  background-color: var(--preto);
+  border-color: var(--preto-borda);
+}
+.vencedor:hover {
+  cursor: default;
+  background-color: var(--verde);
+  border-color: var(--verde-borda);
+}
 .vermelho {
   color: var(--vermelho);
 }
 
 .verde {
   color: var(--verde);
+}
+
+.ouro {
+  color: #f7c631;
+}
+.prata {
+  color: #bebdb9;
+}
+.bronze {
+  color: #d5a47d;
 }
 @media (max-width: 1150px) {
   .botoes {
