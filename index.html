@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Torneio</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <main class="wrapper">
+    <aside>
+      <div class="titulo-aside">
+        <img src="./img/peao.png" alt="peão de xadrez">
+        <h3>Como usar?</h3>
+      </div>
+      <hr>
+      <ol>
+        <li>
+          Preencha o nome do jogador
+        </li>
+        <li>
+          Quando estiver tudo pronto, aperte o botão <span class="verde">Começar</span>
+        </li>
+        <li>
+          Marque o resultado dos jogos, de acordo com o decorrer do torneio
+        </li>
+        <li>
+          Aproveite o torneio!
+        </li>
+      </ol>
+    </aside>
+    <div class="container">
+
+      <div class="titulo">
+        <img src="./img/torneio.svg" alt="uma medalha de ouro">
+        <h1>Torneios</h1>
+      </div>
+
+      <div class="caixa" id="caixa-nomes">
+        <div class="titulo-linha">
+          <h3 class="titulo-caixa">Adicionando jogadores</h3>
+          <hr>
+        </div>
+        <div class="add-nome">
+
+          <input class="nome" autocomplete="off" id="nome" placeholder="Nome" type="text">
+
+          <button class="button add" id="add">Adicionar</button>
+        </div>
+
+
+        <table id="tabela-jogadores">
+          <thead>
+            <tr>
+              <th>Jogadores</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-jogadores">
+            <tr id="vazio">
+              <td>Vazio por agora. </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="caixa-partidas" class="caixa" style="display: none;">
+        <div class="titulo-linha">
+          <h3 class="titulo-caixa">Partidas</h3>
+          <hr>
+        </div>
+        <div id="partidas"></div>
+        <table id="tabela-ranking">
+          <thead>
+            <tr>
+              <th>Ranking</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-ranking">
+          </tbody>
+        </table>
+      </div>
+
+      <div class="botoes">
+        <button class="start button" id="start">Começar</button>
+        <button class="load button preto">Carregar</button>
+      </div>
+    </div>
+  </main>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
