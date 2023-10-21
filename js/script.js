@@ -34,8 +34,17 @@ function addJogador() {
       </tr>
     `;
     document.querySelector('#tbody-jogadores').innerHTML += html;
+    document.querySelector('#nome').value = '';
+  } else {
+    alert('Preencha o nome do jogador!');
   }
 }
+
+document.querySelector('#nome').addEventListener('keydown', function (event) {
+  if (event.keyCode === 13) {
+    addJogador();
+  }
+});
 
 function deletaJogador(id) {
   if (jogadores[id] !== undefined) {
@@ -108,6 +117,9 @@ function registraVitoria(partidaIndex, vencedorIndex) {
   let vencedor = partida[vencedorIndex];
   vencedor.pontos++;
 
+  localStorage.setItem('jogadores', JSON.stringify(jogadores));
+  localStorage.setItem('partidas', JSON.stringify(partidas));
+
   if (vencedorIndex === 0) {
     document.querySelector(`#partida-nomes${partidaIndex}`).innerHTML = `
       <p class="nome1 verde">${partidas[partidaIndex][0].nome}</p>
@@ -135,17 +147,20 @@ function registraVitoria(partidaIndex, vencedorIndex) {
       </button>
     `;
   }
-
   atualizaRanking(jogadores);
 }
 
 function start() {
-  document.querySelector('#caixa-partidas').style =
-    'display: grid; margin-bottom: 10px';
-  document.querySelector('#caixa-nomes').style = 'display: none';
-  document.querySelector('.botoes').style = 'display: none';
-  mostraPartidas(partidas);
-  atualizaRanking(jogadores);
+  if (jogadores.length > 1) {
+    document.querySelector('#caixa-partidas').style =
+      'display: grid; margin-bottom: 10px';
+    document.querySelector('#caixa-nomes').style = 'display: none';
+    document.querySelector('.botoes').style = 'display: none';
+    atualizaRanking(jogadores);
+    mostraPartidas(partidas);
+  } else {
+    alert('É necessário pelo menos 2 jogadores.');
+  }
 }
 
 function atualizaRanking(jogadores) {
@@ -168,28 +183,29 @@ function atualizaRanking(jogadores) {
         <td class="ouro">#${i + 1} ${jogadores[i].nome}</td>
         <td class="pontos">${jogadores[i].pontos}</td>
       </tr>
-    `;
+      `;
     } else if (i === 1) {
       html += `
       <tr>
         <td class="prata">#${i + 1} ${jogadores[i].nome}</td>
         <td class="pontos">${jogadores[i].pontos}</td>
       </tr>
-    `;
+      `;
     } else if (i === 2) {
       html += `
       <tr>
         <td class="bronze">#${i + 1} ${jogadores[i].nome}</td>
         <td class="pontos">${jogadores[i].pontos}</td>
       </tr>
-    `;
-    } else
+      `;
+    } else {
       html += `
       <tr>
         <td>#${i + 1} ${jogadores[i].nome}</td>
         <td class="pontos">${jogadores[i].pontos}</td>
       </tr>
-    `;
+      `;
+    }
   }
 
   document.querySelector('#tabela-ranking').innerHTML += html;
