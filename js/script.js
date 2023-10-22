@@ -1,6 +1,6 @@
 document.querySelector('#add').addEventListener('click', addJogador);
 document.querySelector('#start').addEventListener('click', start);
-
+document.querySelector('#load').addEventListener('click', load);
 class Jogador {
   constructor(nome) {
     this.nome = nome;
@@ -117,9 +117,6 @@ function registraVitoria(partidaIndex, vencedorIndex) {
   let vencedor = partida[vencedorIndex];
   vencedor.pontos++;
 
-  localStorage.setItem('jogadores', JSON.stringify(jogadores));
-  localStorage.setItem('partidas', JSON.stringify(partidas));
-
   if (vencedorIndex === 0) {
     document.querySelector(`#partida-nomes${partidaIndex}`).innerHTML = `
       <p class="nome1 verde">${partidas[partidaIndex][0].nome}</p>
@@ -152,6 +149,8 @@ function registraVitoria(partidaIndex, vencedorIndex) {
 
 function start() {
   if (jogadores.length > 1) {
+    localStorage.setItem('jogadores', JSON.stringify(jogadores));
+    localStorage.setItem('partidas', JSON.stringify(partidas));
     document.querySelector('#caixa-partidas').style =
       'display: grid; margin-bottom: 10px';
     document.querySelector('#caixa-nomes').style = 'display: none';
@@ -209,4 +208,12 @@ function atualizaRanking(jogadores) {
   }
 
   document.querySelector('#tabela-ranking').innerHTML += html;
+}
+
+function load() {
+  if (localStorage.getItem('jogadores') && localStorage.getItem('partidas')) {
+    jogadores = JSON.parse(localStorage.getItem('jogadores'));
+    partidas = JSON.parse(localStorage.getItem('partidas'));
+    start();
+  }
 }
